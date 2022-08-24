@@ -1,8 +1,8 @@
-import { Rand, Lerp } from './utils.js'
+import { Rand, Lerp } from './utils.js';
 
 window.addEventListener('keydown', (event) => {
-  if(event.key == ' ') event.preventDefault()
-})
+  if(event.key == ' ') event.preventDefault();
+});
 
 
 class Color{
@@ -14,22 +14,22 @@ class Color{
   }
 
   static LerpColors(ColorA, ColorB, LerpValue){ 
-    let r = Lerp(ColorA.r, ColorB.r, LerpValue)
-    let g = Lerp(ColorA.g, ColorB.g, LerpValue)
-    let b = Lerp(ColorA.b, ColorB.b, LerpValue)
-    let a = Lerp(ColorA.a, ColorB.a, LerpValue)
+    let r = Lerp(ColorA.r, ColorB.r, LerpValue);
+    let g = Lerp(ColorA.g, ColorB.g, LerpValue);
+    let b = Lerp(ColorA.b, ColorB.b, LerpValue);
+    let a = Lerp(ColorA.a, ColorB.a, LerpValue);
 
-    return new Color(r, g, b, a)
+    return new Color(r, g, b, a);
   }
 
   static Rand(){
-    return new Color(Rand(0, 255), Rand(0, 255), Rand(0, 255), 1)
+    return new Color(Rand(0, 255), Rand(0, 255), Rand(0, 255), 1);
   }
 
   toString(){
-    return `rgba(${this.r}, ${this.g}, ${this.b}, ${this.a})`
+    return `rgba(${this.r}, ${this.g}, ${this.b}, ${this.a})`;
   }
-}
+};
 
 
 class Cell{
@@ -56,16 +56,16 @@ class Cell{
 class Grid{
   constructor(width, height, cellSize){
     this.width = width
-    this.height = height
-    this.cellSize = cellSize
-    this.pause = false
-    this.cells = []
+    this.height = height;
+    this.cellSize = cellSize;
+    this.pause = false;
+    this.cells = [];
     this.gen = 0
     this.prev = Date.now()
     this.current
     this.elapsed
     this.lag = 0.0
-    this.fps = 60
+    this.fps = 20
     this.fpsInt = 1000 / this.fps
     
     this.aliveColor = new Color(Rand(175, 255), Rand(170, 255), Rand(170, 255), .8)
@@ -118,13 +118,13 @@ class Grid{
   Logic(){
     this.CheckNeighbors()
     for(const cell of this.cells){
-      if(this.gen % 250 == 0) this.ColorChange()
+      if(this.gen % 120 == 0) this.ColorChange()
       if(!this.pause){
       if(cell.aliveNeighbors == 2){}
       else if(cell.aliveNeighbors == 3)
       {cell.state = 1} else(cell.state = 0)
 
-      if(this.gen % 250 == 0) this.Randomize()
+      if(this.gen % 120 == 0) this.Randomize()
       }
       cell.color =
       Color.LerpColors(cell.color, cell.state == 0 ? this.deadColor : this.aliveColor, cell.state == 1 ? .25 : .5)
@@ -175,4 +175,4 @@ class Grid{
   }
 }
 
-new Grid(Math.floor(window.innerWidth / 20), Math.floor(window.innerHeight / 20), 20)
+new Grid(Math.floor(window.innerWidth / 20), Math.floor(window.innerHeight / 20), 20);
