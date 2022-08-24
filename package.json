@@ -1,0 +1,15 @@
+{
+  "name": "GameOfLife",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "dev": "npx nodemon server.js", 
+    "deploy" : "npx gh-pages -d dist"
+  },
+  "author": "ElijahAllenBlackmon",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
