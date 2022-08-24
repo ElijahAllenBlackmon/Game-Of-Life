@@ -118,13 +118,13 @@ class Grid{
   Logic(){
     this.CheckNeighbors()
     for(const cell of this.cells){
-      if(this.gen % 60 == 0) this.ColorChange()
+      if(this.gen % 250 == 0) this.ColorChange()
       if(!this.pause){
       if(cell.aliveNeighbors == 2){}
       else if(cell.aliveNeighbors == 3)
       {cell.state = 1} else(cell.state = 0)
 
-      if(this.gen % 200 == 0) this.Randomize()
+      if(this.gen % 250 == 0) this.Randomize()
       }
       cell.color =
       Color.LerpColors(cell.color, cell.state == 0 ? this.deadColor : this.aliveColor, cell.state == 1 ? .25 : .5)
