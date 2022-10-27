@@ -1,2 +1,8 @@
 # Game-Of-Life
-Change Colors- C, Randomize Cell States- R, Kill Cells- V, Pause Growth- Spacebar 
+
+INTERACTIVITY
+
+Press 'C' to: Change Colors 
+Press 'R' to: Randomize Cell States
+Press 'V' to: Kill Cells
+Press 'Spacebar' to: Pause Growth
